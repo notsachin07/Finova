@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salary, Tax & Loan Simulator | Finova</title>
+  <meta name="description" content="Calculate your in-hand salary, income tax under revised 2024-25 slabs, 50/30/20 emergency runway, and student loan repayment math with Finova.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DDA15E'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            espresso: { 950: '#120D0A', 900: '#1A130F', 800: '#241A14', 700: '#31231B', 600: '#423025' },
+            latte: { 50: '#FDFBF7', 100: '#F5EFEB', 200: '#EADBCE', 300: '#D8C5B2', 400: '#C4AE99' },
+            caramel: { light: '#E0A96D', DEFAULT: '#DDA15E', dark: '#BC6C25' }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#120D0A] text-[#F5EFEB] antialiased selection:bg-[#DDA15E] selection:text-[#120D0A]">
+
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- TOP CRAWLING MARQUEE TICKER -->
+  <div class="relative z-30 bg-[#1A130F] border-b border-[#DDA15E]/25 py-2 overflow-hidden text-[11px] font-mono text-[#D8C5B2]">
+    <div class="marquee-wrapper">
+      <div class="marquee-content gap-8 items-center px-4">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> SALARY & TAX ENGINE:</span>
+        <span>• UNION BUDGET REVISED SLABS (0-3L NIL, 3-7L 5%, 7-10L 10%, 10-12L 15%, 12-15L 20%, >15L 30%)</span>
+        <span>• STANDARD DEDUCTION: ₹75,000 MANDATORY FOR SALARIED</span>
+        <span>• S.87A REBATE: EFFECTIVE ₹0 TAX UP TO ₹7.75 LAKHS</span>
+        <span>• 50/30/20 ALLOCATION: NEEDS, WANTS, AND EMERGENCY RUNWAY</span>
+      </div>
+      <div class="marquee-content gap-8 items-center px-4" aria-hidden="true">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> SALARY & TAX ENGINE:</span>
+        <span>• UNION BUDGET REVISED SLABS (0-3L NIL, 3-7L 5%, 7-10L 10%, 10-12L 15%, 12-15L 20%, >15L 30%)</span>
+        <span>• STANDARD DEDUCTION: ₹75,000 MANDATORY FOR SALARIED</span>
+        <span>• S.87A REBATE: EFFECTIVE ₹0 TAX UP TO ₹7.75 LAKHS</span>
+        <span>• 50/30/20 ALLOCATION: NEEDS, WANTS, AND EMERGENCY RUNWAY</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full glass-nav-warm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#E0A96D] via-[#DDA15E] to-[#BC6C25] p-[1.5px] shadow-lg shadow-[#BC6C25]/25 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#1A130F] rounded-[14px] flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#DDA15E] group-hover:text-[#FDFBF7] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-2xl tracking-tight text-[#FDFBF7]">Finova</span>
+            <span class="px-2.5 py-0.5 text-[10px] font-mono font-bold bg-[#DDA15E]/20 text-[#DDA15E] border border-[#DDA15E]/40 rounded-full uppercase tracking-wider">Engine</span>
+          </div>
+          <p class="text-[10px] text-[#D8C5B2] tracking-wide font-medium hidden sm:block">VIT-AP • Wadhwani Foundation Venture</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-[#D8C5B2]">
+        <a href="index.html" class="hover:text-[#FDFBF7] transition-colors">Overview</a>
+        <a href="curriculum.html" class="hover:text-[#FDFBF7] transition-colors">Curriculum Academy</a>
+        <a href="calculator.html" class="text-[#DDA15E] font-bold border-b-2 border-[#DDA15E] pb-1">Salary & Tax Engine</a>
+        <a href="dean-analytics.html" class="hover:text-[#FDFBF7] transition-colors">Dean Analytics</a>
+        <a href="about.html" class="hover:text-[#FDFBF7] transition-colors">About & Mission</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="soundToggleBtn" type="button" class="px-3 py-1.5 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/30 text-xs font-mono text-[#D8C5B2] flex items-center gap-1.5 transition-all">
+          <svg class="w-4 h-4 text-[#DDA15E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span class="hidden sm:inline">SFX: ON</span>
+        </button>
+
+        <button class="open-demo-modal-btn px-5 py-2.5 rounded-xl btn-gold text-xs sm:text-sm font-bold flex items-center gap-2">
+          <span>Request Campus Demo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Page Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2 font-bold">
+          Real-Time Mathematical Simulator
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight mb-4">
+          Interactive Salary, Tax & Budget Engine
+        </h1>
+        <p class="text-[#D8C5B2] text-base sm:text-lg">
+          Simulate job offers, compare the revised New Tax Regime against the Old Regime, calculate student loan amortizations, and allocate a 50/30/20 emergency runway.
+        </p>
+      </div>
+
+      <!-- Main Calculator Box -->
+      <div class="card-espresso rounded-3xl p-6 sm:p-10 border border-[#DDA15E]/30 shadow-2xl mb-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Inputs (Span 5) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-[#DDA15E]/20">
+              <span class="text-sm font-bold text-[#FDFBF7] uppercase tracking-wider font-mono">1. Offer Parameters</span>
+              <div class="p-1 rounded-xl bg-[#120D0A] border border-[#DDA15E]/30 flex items-center gap-1 text-xs font-mono">
+                <button id="regimeNew" type="button" class="px-3 py-1 rounded-lg bg-[#DDA15E] text-[#120D0A] font-bold transition-all">New Regime</button>
+                <button id="regimeOld" type="button" class="px-3 py-1 rounded-lg bg-[#241A14] text-[#D8C5B2] font-medium transition-all">Old Regime</button>
+              </div>
+            </div>
+
+            <!-- CTC Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label for="calcCtc" class="font-medium text-[#FDFBF7]">Annual Cost to Company (CTC)</label>
+                <span id="calcCtcDisplay" class="font-mono font-bold text-[#DDA15E] text-base">₹12,00,000</span>
+              </div>
+              <input id="calcCtc" type="range" min="300000" max="3600000" step="50000" value="1200000" class="w-full cursor-pointer">
+              <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                <span>₹3 Lakhs</span>
+                <span>₹18 Lakhs</span>
+                <span>₹36 Lakhs</span>
+              </div>
+            </div>
+
+            <!-- Student Loan EMI Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label for="calcLoan" class="font-medium text-[#FDFBF7]">Monthly Education Loan EMI</label>
+                <span id="calcLoanDisplay" class="font-mono font-bold text-[#E53E3E] text-base">₹12,000</span>
+              </div>
+              <input id="calcLoan" type="range" min="0" max="40000" step="1000" value="12000" class="w-full cursor-pointer">
+              <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                <span>₹0 (Debt-free)</span>
+                <span>₹20,000</span>
+                <span>₹40,000</span>
+              </div>
+            </div>
+
+            <!-- Emergency Target Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-xs">
+                <label for="calcEmergency" class="font-medium text-[#FDFBF7]">Target Emergency Runway</label>
+                <span id="calcEmergencyDisplay" class="font-mono font-bold text-[#38A169] text-base">4 Months Runway</span>
+              </div>
+              <input id="calcEmergency" type="range" min="1" max="12" step="1" value="4" class="w-full cursor-pointer">
+              <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                <span>1 Mo</span>
+                <span>6 Mos (Rec.)</span>
+                <span>12 Mos</span>
+              </div>
+            </div>
+
+            <!-- Educational Callout -->
+            <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/20 text-xs text-[#D8C5B2] leading-relaxed">
+              <span class="text-[#DDA15E] font-bold font-mono">STATUTORY BENEFIT:</span> Under the New Tax Regime, salaried individuals automatically claim the ₹75,000 standard deduction and ₹25,000 Section 87A rebate without submitting bills or receipts.
+            </div>
+          </div>
+
+          <!-- Outputs (Span 7) -->
+          <div class="lg:col-span-7 bg-[#241A14] rounded-2xl p-6 sm:p-8 border border-[#DDA15E]/20 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-[#DDA15E]/20 mb-6">
+                <span class="text-sm font-bold text-[#FDFBF7] uppercase tracking-wider font-mono">2. Monthly In-Hand Paystub Result</span>
+                <div class="flex items-center gap-1.5 text-xs font-mono text-[#38A169]">
+                  <span class="w-2 h-2 rounded-full bg-[#38A169]"></span>
+                  <span>In-Hand Take-Home: <strong id="resInHandRatio" class="text-[#FDFBF7]">82%</strong></span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/20">
+                  <div class="text-[11px] text-[#D8C5B2]">Gross Monthly</div>
+                  <div id="resMonthlyGross" class="text-lg font-mono font-bold text-[#FDFBF7]">₹1,00,000</div>
+                  <div class="text-[10px] text-[#D8C5B2]">CTC ÷ 12</div>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#38A169]/15 border border-[#38A169]/40">
+                  <div class="text-[11px] text-[#38A169] font-bold">Net In-Hand</div>
+                  <div id="resInHand" class="text-lg font-mono font-bold text-[#FDFBF7]">₹82,450</div>
+                  <div class="text-[10px] text-[#38A169]">Lands in Account</div>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#E53E3E]/15 border border-[#E53E3E]/40">
+                  <div class="text-[11px] text-[#E53E3E]">TDS / Tax (Mo)</div>
+                  <div id="resTDS" class="text-lg font-mono font-bold text-[#FDFBF7]">₹6,200</div>
+                  <div class="text-[10px] text-[#D8C5B2]">Withholding</div>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#DDA15E]/15 border border-[#DDA15E]/40">
+                  <div class="text-[11px] text-[#DDA15E]">PF + PT Deduct</div>
+                  <div id="resEPF" class="text-lg font-mono font-bold text-[#FDFBF7]">₹1,800</div>
+                  <div class="text-[10px] text-[#D8C5B2]">+ ₹200 PT</div>
+                </div>
+              </div>
+
+              <!-- 50/30/20 Rule Distribution -->
+              <div class="p-4 rounded-xl bg-[#1A130F] border border-[#DDA15E]/20 mb-6">
+                <div class="text-xs font-mono text-[#D8C5B2] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>50-30-20 Smart Rule Allocation</span>
+                  <span class="text-[#DDA15E] font-bold">Harvard Benchmark</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3 text-center">
+                  <div class="p-3 rounded-lg bg-[#241A14]">
+                    <div class="text-[10px] text-[#D8C5B2]">Needs (50%)</div>
+                    <div id="resNeeds" class="text-sm font-mono font-bold text-[#FDFBF7]">₹41,225</div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-[#241A14]">
+                    <div class="text-[10px] text-[#D8C5B2]">Wants (30%)</div>
+                    <div id="resWants" class="text-sm font-mono font-bold text-[#FDFBF7]">₹24,735</div>
+                  </div>
+                  <div class="p-3 rounded-lg bg-[#241A14]">
+                    <div class="text-[10px] text-[#D8C5B2]">Savings & Runway (20%)</div>
+                    <div id="resSavings" class="text-sm font-mono font-bold text-[#38A169]">₹16,490</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="pt-4 border-t border-[#DDA15E]/20 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+              <div>
+                <span class="text-[#D8C5B2]">Target Emergency Runway: </span>
+                <strong id="resEmergencyTarget" class="text-[#38A169] text-sm">₹1,60,000</strong>
+                <span id="resEmergencyTimeline" class="ml-2 text-[11px] text-[#D8C5B2]">(9.7 mos to goal)</span>
+              </div>
+              <div>
+                <span class="text-[#D8C5B2]">Annual Tax Liability: </span>
+                <strong id="resAnnualTax" class="text-[#E53E3E] text-sm">₹74,400</strong>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Tax Slab Reference Comparison Table -->
+      <div class="card-espresso rounded-3xl p-8 border border-[#DDA15E]/25">
+        <h3 class="text-xl font-display font-bold text-[#FDFBF7] mb-4">
+          2024–2025 Union Budget Tax Slab Comparison
+        </h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm font-mono">
+            <thead>
+              <tr class="border-b border-[#DDA15E]/20 text-[#DDA15E]">
+                <th class="py-3 px-4">Income Bracket</th>
+                <th class="py-3 px-4">New Tax Regime (S.115BAC)</th>
+                <th class="py-3 px-4">Old Tax Regime</th>
+                <th class="py-3 px-4">Key Takeaway</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#DDA15E]/10 text-[#D8C5B2]">
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">₹0 – ₹3,00,000</td>
+                <td class="py-3 px-4 text-[#38A169]">0% (Nil)</td>
+                <td class="py-3 px-4">0% (Nil up to ₹2.5L)</td>
+                <td class="py-3 px-4">Zero tax across both regimes</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">₹3,00,001 – ₹7,00,000</td>
+                <td class="py-3 px-4 text-[#38A169]">5% (100% Rebated via 87A)</td>
+                <td class="py-3 px-4">20% (above ₹5L)</td>
+                <td class="py-3 px-4 text-[#38A169]">New Regime gives ₹0 tax up to ₹7L</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">₹7,00,001 – ₹10,00,000</td>
+                <td class="py-3 px-4">10%</td>
+                <td class="py-3 px-4">20%</td>
+                <td class="py-3 px-4">New Regime cuts tax rate in half</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">₹10,00,001 – ₹12,00,000</td>
+                <td class="py-3 px-4">15%</td>
+                <td class="py-3 px-4">30%</td>
+                <td class="py-3 px-4">Old Regime triggers 30% top bracket</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">₹12,00,001 – ₹15,00,000</td>
+                <td class="py-3 px-4">20%</td>
+                <td class="py-3 px-4">30%</td>
+                <td class="py-3 px-4">New Regime maintains lower marginal rate</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 text-[#FDFBF7] font-semibold">> ₹15,00,000</td>
+                <td class="py-3 px-4">30%</td>
+                <td class="py-3 px-4">30%</td>
+                <td class="py-3 px-4">Equal top bracket; 4% cess applicable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="border-t border-[#DDA15E]/20 bg-[#120D0A] py-12 text-[#D8C5B2] text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Finova Inc. Built for Higher Education. Verified with Central Tax Rules.</div>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-[#FDFBF7]">Home</a>
+        <a href="curriculum.html" class="hover:text-[#FDFBF7]">Curriculum</a>
+        <a href="calculator.html" class="text-[#DDA15E]">Calculator</a>
+        <a href="dean-analytics.html" class="hover:text-[#FDFBF7]">Dean Analytics</a>
+        <a href="about.html" class="hover:text-[#FDFBF7]">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -429,6 +429,141 @@ const comprehensiveCourseDatabase = [
         { text: "They provide too much money upon retirement.", correct: false, feedback: "Quite the opposite: returns barely match inflation." }
       ]
     }
+  },
+  {
+    id: "esop-equity",
+    number: "07",
+    tag: "Startup & Tech Equity",
+    title: "ESOPs & Startup Equity: Vesting, Exercise Price & Taxes",
+    subtitle: "Understanding 4-year vesting schedules, 1-year cliffs, strike prices, and double taxation on liquidity",
+    readTime: "7 min in-depth chapter",
+    sourceBadge: "Curriculum Source: Y Combinator Startup School & AngelList Venture",
+    xpReward: 80,
+    quickSummary: "Employee Stock Option Plans (ESOPs) grant the right to buy shares at a predetermined price. Taxes occur twice: at exercise as a perquisite, and upon sale as capital gains.",
+    fullContent: `
+      <h3>1. The Mechanics of ESOP Vesting: Cliffs and Schedules</h3>
+      <p>Tech and consulting graduates joining high-growth startups are frequently offered equity grants (e.g., 2,000 ESOP options with an exercise price of ₹100). Having options is not the same as owning shares. You must first 'vest' your grant.</p>
+      <ul>
+        <li><strong>The Standard 4-Year Schedule:</strong> Typically, 25% of your total option grant vests each year over 48 months.</li>
+        <li><strong>The 1-Year Cliff:</strong> If you leave the company before 12 continuous months of employment, you leave with <em>zero options</em>. Once you cross the 365-day mark, 25% vests instantaneously.</li>
+        <li><strong>Exercise Price (Strike Price):</strong> The fixed discounted price per share you pay to convert your vested options into real equity.</li>
+      </ul>
+
+      <h3>2. The Dual-Stage Taxation Trap</h3>
+      <p>In most jurisdictions including India and the US, startup equity is subject to taxation at two distinct moments:</p>
+      <ul>
+        <li><strong>Stage 1 — Exercise as a Perquisite:</strong> When you pay the strike price to convert options into shares, the difference between the Fair Market Value (FMV) and your strike price is treated as ordinary salary income and taxed at your top marginal tax bracket (up to 30%+).</li>
+        <li><strong>Stage 2 — Capital Gains Upon Sale:</strong> When the company has an IPO or secondary buyback and you sell your shares, the gain above the FMV is taxed as Capital Gains (Short-Term or Long-Term).</li>
+      </ul>
+    `,
+    quiz: {
+      question: "What happens if a graduate leaves a startup after 10 months with a standard 1-year cliff on their ESOPs?",
+      options: [
+        { text: "They forfeit 100% of their equity options because the 1-year cliff was not reached.", correct: true, feedback: "Correct! The 1-year cliff is an all-or-nothing threshold designed to reward long-term retention." },
+        { text: "They receive 100% of all 4 years of shares immediately in cash.", correct: false, feedback: "Incorrect. Cliff agreements require completing a full 12 months." },
+        { text: "The university dean receives the shares automatically.", correct: false, feedback: "Fictitious statement." },
+        { text: "They can trade them on public stock exchanges the next day.", correct: false, feedback: "Unvested options cannot be traded or exercised." }
+      ]
+    }
+  },
+  {
+    id: "student-loan-80e",
+    number: "08",
+    tag: "Debt & Tax Relief",
+    title: "Student Loan Amortization & Unlimited Tax Relief under Section 80E",
+    subtitle: "How to legally deduct 100% of education loan interest with zero cap for up to 8 years",
+    readTime: "6 min in-depth chapter",
+    sourceBadge: "Curriculum Source: Income Tax Act 1961 Section 80E & Federal Aid Guidelines",
+    xpReward: 70,
+    quickSummary: "Section 80E allows an uncapped income deduction on education loan interest for 8 continuous assessment years, significantly reducing tax outgo during early career phases.",
+    fullContent: `
+      <h3>1. Understanding Section 80E: An Uncapped Deduction</h3>
+      <p>While Section 80C caps tax savings at ₹1.5 Lakhs, <strong>Section 80E has zero upper monetary ceiling</strong>. If you pay ₹1,80,000 in interest on your university education loan in a financial year, the entire ₹1,80,000 is subtracted straight from your gross taxable income.</p>
+      <ul>
+        <li><strong>Eligible Loans:</strong> Must be taken for higher education (post-secondary degrees) from a scheduled bank or approved financial institution.</li>
+        <li><strong>Duration:</strong> Available for a maximum of <strong>8 continuous assessment years</strong> starting from the year you start repaying interest.</li>
+        <li><strong>Principal vs Interest:</strong> Only the <em>interest component</em> is deductible under 80E (the principal repayment is not eligible).</li>
+      </ul>
+
+      <h3>2. Amortization Acceleration: The 10% Extra Rule</h3>
+      <p>Paying just 10% extra on your monthly student loan EMI directly toward the principal balance can shave <strong>3 to 4 years</strong> off an 8-year loan, saving tens of thousands of rupees in compound interest over the repayment cycle.</p>
+    `,
+    quiz: {
+      question: "What is the maximum annual rupee limit for interest deduction under Section 80E for education loans?",
+      options: [
+        { text: "There is no upper limit; 100% of the interest paid is fully deductible for up to 8 years.", correct: true, feedback: "Exactly right! Section 80E is uniquely uncapped, offering substantial relief to graduates repaying student loans." },
+        { text: "Capped strictly at ₹1,50,000 like 80C.", correct: false, feedback: "Incorrect. 80C is capped at ₹1.5L, but 80E has no limit." },
+        { text: "Capped at ₹10,000 per lifetime.", correct: false, feedback: "False." },
+        { text: "Only ₹5,000 if you attended a private university.", correct: false, feedback: "Completely fictitious." }
+      ]
+    }
+  },
+  {
+    id: "real-estate-reits",
+    number: "09",
+    tag: "Real Assets",
+    title: "Real Estate & REITs vs Renting: The Opportunity Cost Formula",
+    subtitle: "Analyzing mortgage interest, property tax, maintenance drag, and Real Estate Investment Trusts",
+    readTime: "6 min in-depth chapter",
+    sourceBadge: "Curriculum Source: CFA Institute Real Estate Asset Class Analysis",
+    xpReward: 65,
+    quickSummary: "Buying an expensive home in your early 20s locks capital into illiquid brick and mortar. Renting plus investing the down payment surplus often compounds far higher.",
+    fullContent: `
+      <h3>1. The 5% Rule: Comparing the Cost of Renting vs Owning</h3>
+      <p>Young graduates face intense societal pressure to buy a residential flat immediately upon landing a job. However, owning property comes with 'unrecoverable costs':</p>
+      <ul>
+        <li><strong>Property Taxes & Municipal Levies:</strong> ~1% of property value per annum.</li>
+        <li><strong>Maintenance, Society Fees & Depreciation:</strong> ~1% of property value per annum.</li>
+        <li><strong>Cost of Capital / Mortgage Interest:</strong> ~3% to 4% real cost over inflation.</li>
+      </ul>
+      <p>If the annual rent for a comparable home is less than 3% to 4% of the property purchase price (which is true in most Indian metro cities like Bengaluru, Mumbai, and Hyderabad where rental yields are 2.5% to 3.5%), <strong>renting and investing the down-payment surplus in broad market indices builds significantly greater net worth</strong>.</p>
+
+      <h3>2. REITs: Liquid Fractional Real Estate</h3>
+      <p>For graduates who desire commercial real estate exposure with monthly/quarterly dividend yields without having ₹50 Lakhs in cash, <strong>Real Estate Investment Trusts (REITs)</strong> allow you to buy units for under ₹400 on public stock exchanges with 100% daily liquidity.</p>
+    `,
+    quiz: {
+      question: "What is a major advantage of Real Estate Investment Trusts (REITs) over purchasing physical real estate?",
+      options: [
+        { text: "Instant liquidity on stock exchanges, professional institutional management, and fractional entry starting under ₹500.", correct: true, feedback: "Spot on! REITs democratize prime commercial grade-A real estate with instant liquidity." },
+        { text: "REITs guarantee you can live in the commercial skyscraper rent-free.", correct: false, feedback: "False. REITs are investment vehicles, not residential leases." },
+        { text: "REITs eliminate all income taxes across the entire nation.", correct: false, feedback: "False." },
+        { text: "REITs are only available to bank CEOs.", correct: false, feedback: "Anyone with a standard demat account can invest in REITs." }
+      ]
+    }
+  },
+  {
+    id: "tax-exemptions-80d",
+    number: "10",
+    tag: "Advanced Deductions",
+    title: "Section 80D Health & Section 80G Charitable Tax Optimization",
+    subtitle: "Maximizing health insurance tax deductions for self and senior citizen parents, plus certified donation exemptions",
+    readTime: "5 min in-depth chapter",
+    sourceBadge: "Curriculum Source: CBDT Direct Taxes Circulars & Healthcare Finance",
+    xpReward: 60,
+    quickSummary: "Under Section 80D, claim up to ₹25,000 for self/family and up to ₹50,000 for senior citizen parents, plus ₹5,000 for preventive health checkups.",
+    fullContent: `
+      <h3>1. Section 80D: Health Insurance Premium Deductions</h3>
+      <p>Under the Old Tax Regime, Section 80D offers deduction limits for medical insurance premiums paid via digital banking modes (cash payments are ineligible):</p>
+      <ul>
+        <li><strong>Self, Spouse & Dependent Children:</strong> Up to <strong>₹25,000</strong> per financial year.</li>
+        <li><strong>Parents (Below 60 Years):</strong> An additional <strong>₹25,000</strong>.</li>
+        <li><strong>Senior Citizen Parents (Above 60 Years):</strong> Up to <strong>₹50,000</strong>.</li>
+        <li><strong>Preventive Health Checkup:</strong> Up to <strong>₹5,000</strong> within the overall limits (this sub-limit alone can be paid in cash!).</li>
+        <li><strong>Maximum Combined Deduction:</strong> Up to <code>₹25,000 + ₹50,000 = ₹75,000</code> annually!</li>
+      </ul>
+
+      <h3>2. Section 80G: Certified Philanthropy with 50% to 100% Deduction</h3>
+      <p>Donations to recognized relief funds (e.g. Prime Minister's National Relief Fund) qualify for 100% tax deduction without qualifying limits. Donating to registered Section 80G university scholarships and trusts provides a 50% deduction subject to 10% of adjusted gross total income.</p>
+    `,
+    quiz: {
+      question: "What is the maximum annual tax deduction limit under Section 80D for medical insurance covering self (below 60) and senior citizen parents?",
+      options: [
+        { text: "Up to ₹75,000 (₹25k for self/family + ₹50k for senior citizen parents).", correct: true, feedback: "Correct! ₹25,000 for self/family plus ₹50,000 for senior parents yields up to ₹75,000 total deduction." },
+        { text: "Exactly ₹1,000.", correct: false, feedback: "Incorrect." },
+        { text: "There is no deduction for health insurance in India.", correct: false, feedback: "False. Section 80D is one of the most widely used deductions in the Income Tax Act." },
+        { text: "₹10,00,000 automatically without insurance.", correct: false, feedback: "Completely fictitious." }
+      ]
+    }
   }
 ];
 
@@ -676,6 +811,8 @@ function initInteractiveMockupToggle() {
 // --- Interactive Salary, Tax & Budget Engine ---
 function initCalculator() {
   const ctcInput = document.getElementById('calcCtc');
+  if (!ctcInput) return;
+
   const ctcDisplay = document.getElementById('calcCtcDisplay');
   const loanInput = document.getElementById('calcLoan');
   const loanDisplay = document.getElementById('calcLoanDisplay');
@@ -747,6 +884,8 @@ function initCalculator() {
 function initCourseCurriculum() {
   const tabsContainer = document.getElementById('courseTabsContainer');
   const chapterViewer = document.getElementById('courseChapterViewer');
+  if (!tabsContainer && !chapterViewer) return;
+
   const streakCounter = document.getElementById('studentStreakCounter');
   const xpCounter = document.getElementById('studentXpCounter');
   const levelBadge = document.getElementById('studentLevelBadge');

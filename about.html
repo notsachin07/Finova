@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Finova | Mission, Research & Institutional Story</title>
+  <meta name="description" content="Discover Finova's origin story at VIT-AP University, Amaravati and its venture viability validation under the Wadhwani Foundation.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DDA15E'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            espresso: { 950: '#120D0A', 900: '#1A130F', 800: '#241A14', 700: '#31231B', 600: '#423025' },
+            latte: { 50: '#FDFBF7', 100: '#F5EFEB', 200: '#EADBCE', 300: '#D8C5B2', 400: '#C4AE99' },
+            caramel: { light: '#E0A96D', DEFAULT: '#DDA15E', dark: '#BC6C25' }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#120D0A] text-[#F5EFEB] antialiased selection:bg-[#DDA15E] selection:text-[#120D0A]">
+
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- TOP CRAWLING MARQUEE TICKER -->
+  <div class="relative z-30 bg-[#1A130F] border-b border-[#DDA15E]/25 py-2 overflow-hidden text-[11px] font-mono text-[#D8C5B2]">
+    <div class="marquee-wrapper">
+      <div class="marquee-content gap-8 items-center px-4">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> ABOUT FINOVA:</span>
+        <span>• BORN AT VIT-AP UNIVERSITY, AMARAVATI, ANDHRA PRADESH</span>
+        <span>• WADHWANI FOUNDATION VENTURE VIABILITY FRAMEWORK</span>
+        <span>• TARGETING 80% GRADUATE FINANCIAL ILLITERACY CRISIS</span>
+        <span>• ZERO FACULTY WORKLOAD OVERHEAD</span>
+        <span>• CANVAS & MOODLE LTI ADVANTAGE 1.3 CERTIFIED</span>
+      </div>
+      <div class="marquee-content gap-8 items-center px-4" aria-hidden="true">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> ABOUT FINOVA:</span>
+        <span>• BORN AT VIT-AP UNIVERSITY, AMARAVATI, ANDHRA PRADESH</span>
+        <span>• WADHWANI FOUNDATION VENTURE VIABILITY FRAMEWORK</span>
+        <span>• TARGETING 80% GRADUATE FINANCIAL ILLITERACY CRISIS</span>
+        <span>• ZERO FACULTY WORKLOAD OVERHEAD</span>
+        <span>• CANVAS & MOODLE LTI ADVANTAGE 1.3 CERTIFIED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 w-full glass-nav-warm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#E0A96D] via-[#DDA15E] to-[#BC6C25] p-[1.5px] shadow-lg shadow-[#BC6C25]/25 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#1A130F] rounded-[14px] flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#DDA15E] group-hover:text-[#FDFBF7] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-2xl tracking-tight text-[#FDFBF7]">Finova</span>
+            <span class="px-2.5 py-0.5 text-[10px] font-mono font-bold bg-[#DDA15E]/20 text-[#DDA15E] border border-[#DDA15E]/40 rounded-full uppercase tracking-wider">Mission</span>
+          </div>
+          <p class="text-[10px] text-[#D8C5B2] tracking-wide font-medium hidden sm:block">VIT-AP • Wadhwani Foundation Venture</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-[#D8C5B2]">
+        <a href="index.html" class="hover:text-[#FDFBF7] transition-colors">Overview</a>
+        <a href="curriculum.html" class="hover:text-[#FDFBF7] transition-colors">Curriculum Academy</a>
+        <a href="calculator.html" class="hover:text-[#FDFBF7] transition-colors">Salary & Tax Engine</a>
+        <a href="dean-analytics.html" class="hover:text-[#FDFBF7] transition-colors">Dean Analytics</a>
+        <a href="about.html" class="text-[#DDA15E] font-bold border-b-2 border-[#DDA15E] pb-1">About & Mission</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="soundToggleBtn" type="button" class="px-3 py-1.5 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/30 text-xs font-mono text-[#D8C5B2] flex items-center gap-1.5 transition-all">
+          <svg class="w-4 h-4 text-[#DDA15E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span class="hidden sm:inline">SFX: ON</span>
+        </button>
+
+        <button class="open-demo-modal-btn px-5 py-2.5 rounded-xl btn-gold text-xs sm:text-sm font-bold flex items-center gap-2">
+          <span>Request Campus Demo</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Story Hero -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider font-bold">
+            The Institutional Origin Story
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-display font-extrabold text-[#FDFBF7] tracking-tight leading-tight">
+            Bridging the gap between graduation and financial survival.
+          </h1>
+          <p class="text-[#EDE5DC] text-base sm:text-lg leading-relaxed">
+            Finova was founded at <strong>VIT-AP University</strong>, Amaravati, Andhra Pradesh, following an alarming realization: our most brilliant engineering, management, and biotechnology graduates were landing premier job offers, only to experience intense financial shock when reading their first salary slip, receiving Form 16, or navigating compounding credit card interest.
+          </p>
+          <p class="text-[#D8C5B2] text-sm sm:text-base leading-relaxed">
+            Higher education excels at teaching technical theory, but leaves real-world financial adulthood completely unaddressed. We built Finova to plug natively into Canvas and Moodle, guaranteeing every student graduates workplace-ready — with zero additional teaching hours for faculty.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="card-espresso rounded-3xl p-6 border-2 border-[#DDA15E]/40 text-center shadow-2xl relative overflow-hidden">
+            <img src="assets/accreditation_seal.jpg" alt="Finova Higher Ed Accreditation Seal" class="w-64 h-64 mx-auto rounded-2xl object-cover shadow-2xl mb-4 border border-[#DDA15E]/30">
+            <h3 class="text-lg font-bold text-[#FDFBF7]">Accredited Higher-Ed Framework</h3>
+            <p class="text-xs text-[#D8C5B2] font-mono mt-1">Wadhwani Foundation Venture Viability Validated</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Personas & GOOTB Validation -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Persona 1: Dean Rajesh Sharma -->
+        <div class="card-espresso rounded-3xl p-8 border border-[#DDA15E]/20 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-[#DDA15E]/20 text-[#DDA15E] text-xs font-mono font-bold">Primary Institutional Persona</span>
+            <span class="text-xs font-mono text-[#D8C5B2]">Decision Maker</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-[#FDFBF7]">Dean Rajesh Sharma, 48</h3>
+          <p class="text-xs font-mono text-[#DDA15E]">Dean of Academic Affairs • Metropolitan Private University</p>
+          <div class="p-4 rounded-xl bg-[#241A14] text-xs sm:text-sm text-[#EDE5DC] space-y-2">
+            <p><strong>Jobs-to-be-Done:</strong> Integrate practical life-skills training into existing degree programs, enhance graduate career outcome metrics, and satisfy NAAC Criteria 5 benchmarks without overtaxing faculty.</p>
+            <p><strong>Why Current Alternatives Fail:</strong> One-off seminars lack continuity, faculty have packed schedules, and generic online PDFs suffer from under 5% student completion.</p>
+          </div>
+        </div>
+
+        <!-- Persona 2: Final-Year Students -->
+        <div class="card-espresso rounded-3xl p-8 border border-[#DDA15E]/20 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-[#38A169]/20 text-[#38A169] text-xs font-mono font-bold">Secondary User Persona</span>
+            <span class="text-xs font-mono text-[#D8C5B2]">Direct Beneficiary</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-[#FDFBF7]">Abhiram, Anish & Karthika</h3>
+          <p class="text-xs font-mono text-[#38A169]">Final-Year Professional Degree Students • VIT-AP University</p>
+          <div class="p-4 rounded-xl bg-[#241A14] text-xs sm:text-sm text-[#EDE5DC] space-y-2">
+            <p><strong>Voice of Student:</strong> "We spent years learning calculus, but when offer letters arrived with basic, HRA, and TDS deductions, we were financially blind. We needed interactive, 3-minute gamified modules on our phones, not boring lectures."</p>
+            <p><strong>Validated Problem:</strong> Over 80% lack practical knowledge on income tax filing, emergency runways, and credit score mechanics.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="border-t border-[#DDA15E]/20 bg-[#120D0A] py-12 text-[#D8C5B2] text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Finova Inc. Built with pride at VIT-AP University.</div>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-[#FDFBF7]">Home</a>
+        <a href="curriculum.html" class="hover:text-[#FDFBF7]">Curriculum</a>
+        <a href="calculator.html" class="hover:text-[#FDFBF7]">Calculator</a>
+        <a href="dean-analytics.html" class="hover:text-[#FDFBF7]">Dean Analytics</a>
+        <a href="about.html" class="text-[#DDA15E]">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
