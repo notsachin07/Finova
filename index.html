@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finova | LMS-Integrated Financial Education & Analytics for Higher Ed</title>
+  <meta name="description" content="Finova delivers gamified, micro-learning financial education for university students with zero faculty overhead and real-time competency analytics for academic deans. Built for Canvas & Moodle LTI integration.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DDA15E'><path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'/></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            espresso: {
+              950: '#120D0A',
+              900: '#1A130F',
+              800: '#241A14',
+              700: '#31231B',
+              600: '#423025'
+            },
+            latte: {
+              50: '#FDFBF7',
+              100: '#F5EFEB',
+              200: '#EADBCE',
+              300: '#D8C5B2',
+              400: '#C4AE99'
+            },
+            caramel: {
+              light: '#E0A96D',
+              DEFAULT: '#DDA15E',
+              dark: '#BC6C25'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            serif: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet (Brown & Beige Architecture) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-[#120D0A] text-[#F5EFEB] antialiased selection:bg-[#DDA15E] selection:text-[#120D0A]">
+
+  <!-- AMBIENT PARTICLES & NEURAL CANVAS -->
+  <canvas id="ambientCanvas"></canvas>
+
+  <!-- TOP CRAWLING MARQUEE TICKER (LIVE FINANCIAL & HIGHER-ED INDICATORS) -->
+  <div class="relative z-30 bg-[#1A130F] border-b border-[#DDA15E]/25 py-2 overflow-hidden text-[11px] font-mono text-[#D8C5B2]">
+    <div class="marquee-wrapper">
+      <div class="marquee-content gap-8 items-center px-4">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> FINOVA FINANCIAL LIVE TICKER:</span>
+        <span>• UNION BUDGET REVISED S.87A: ZERO TAX UP TO ₹7.75L (SALARIED)</span>
+        <span>• STATUTORY EPF INTEREST: 8.25% COMPILATION RATE</span>
+        <span>• 50/30/20 BUDGET RULE: 50% NEEDS • 30% WANTS • 20% EMERGENCY SHIELD</span>
+        <span>• CREDIT SCORE BENCHMARK: CIBIL 750+ REQUIRED FOR LOWEST PRIME LOANS</span>
+        <span>• S.80E DEDUCTION: 100% UNLIMITED STUDENT LOAN INTEREST EXEMPTION</span>
+        <span>• CAMPUS STATS: OVER 80% GRADUATES ENTER WORKFORCE FINANCIALLY ILLITERATE</span>
+        <span>• NATIVE LMS SYNC: CANVAS LTI 1.3 ADVANTAGE • MOODLE ACTIVE GRADEBOOK</span>
+      </div>
+      <div class="marquee-content gap-8 items-center px-4" aria-hidden="true">
+        <span class="inline-flex items-center gap-1.5 text-[#DDA15E] font-bold"><span class="w-1.5 h-1.5 rounded-full bg-[#DDA15E] animate-ping"></span> FINOVA FINANCIAL LIVE TICKER:</span>
+        <span>• UNION BUDGET REVISED S.87A: ZERO TAX UP TO ₹7.75L (SALARIED)</span>
+        <span>• STATUTORY EPF INTEREST: 8.25% COMPILATION RATE</span>
+        <span>• 50/30/20 BUDGET RULE: 50% NEEDS • 30% WANTS • 20% EMERGENCY SHIELD</span>
+        <span>• CREDIT SCORE BENCHMARK: CIBIL 750+ REQUIRED FOR LOWEST PRIME LOANS</span>
+        <span>• S.80E DEDUCTION: 100% UNLIMITED STUDENT LOAN INTEREST EXEMPTION</span>
+        <span>• CAMPUS STATS: OVER 80% GRADUATES ENTER WORKFORCE FINANCIALLY ILLITERATE</span>
+        <span>• NATIVE LMS SYNC: CANVAS LTI 1.3 ADVANTAGE • MOODLE ACTIVE GRADEBOOK</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION BAR (LUXURY BROWN & BEIGE) -->
+  <header class="sticky top-0 z-40 w-full glass-nav-warm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#E0A96D] via-[#DDA15E] to-[#BC6C25] p-[1.5px] shadow-lg shadow-[#BC6C25]/25 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#1A130F] rounded-[14px] flex items-center justify-center">
+            <svg class="w-6 h-6 text-[#DDA15E] group-hover:text-[#FDFBF7] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-2xl tracking-tight text-[#FDFBF7]">Finova</span>
+            <span class="px-2.5 py-0.5 text-[10px] font-mono font-bold bg-[#DDA15E]/20 text-[#DDA15E] border border-[#DDA15E]/40 rounded-full uppercase tracking-wider">Higher-Ed SaaS</span>
+          </div>
+          <p class="text-[10px] text-[#D8C5B2] tracking-wide font-medium hidden sm:block">VIT-AP • Wadhwani Foundation Venture</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-[#D8C5B2]">
+        <a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors flex items-center gap-1.5">
+          <span>Curriculum Modules</span>
+          <span class="px-1.5 py-0.2 rounded text-[9px] bg-[#DDA15E]/20 text-[#DDA15E] font-mono">6 Chapters</span>
+        </a>
+        <a href="#problem-bento" class="hover:text-[#FDFBF7] transition-colors">The 80% Crisis</a>
+        <a href="#calculator" class="hover:text-[#FDFBF7] transition-colors">Salary & Tax Engine</a>
+        <a href="#dean-analytics" class="hover:text-[#FDFBF7] transition-colors">Dean Analytics</a>
+        <a href="#lms-integration" class="hover:text-[#FDFBF7] transition-colors">LMS Integration</a>
+        <a href="#pricing" class="hover:text-[#FDFBF7] transition-colors">SaaS Tiers</a>
+      </nav>
+
+      <!-- Right CTAs & SFX Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Audio SFX Toggle -->
+        <button id="soundToggleBtn" type="button" class="px-3 py-1.5 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/30 text-xs font-mono text-[#D8C5B2] flex items-center gap-1.5 transition-all">
+          <svg class="w-4 h-4 text-[#DDA15E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          <span class="hidden sm:inline">SFX: ON</span>
+        </button>
+
+        <!-- Primary CTA -->
+        <button class="open-demo-modal-btn px-5 py-2.5 rounded-xl btn-gold text-xs sm:text-sm font-bold flex items-center gap-2">
+          <span>Request Campus Demo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" type="button" class="lg:hidden p-2 rounded-xl bg-[#241A14] border border-[#DDA15E]/30 text-[#D8C5B2]" aria-label="Toggle navigation menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#1A130F] border-t border-[#DDA15E]/20 px-6 py-6 space-y-4">
+      <a href="#curriculum" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">Curriculum Modules (6 Chapters)</a>
+      <a href="#problem-bento" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">The 80% Crisis</a>
+      <a href="#calculator" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">Salary & Tax Calculator</a>
+      <a href="#dean-analytics" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">Dean Analytics Dashboard</a>
+      <a href="#lms-integration" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">Canvas & Moodle LTI Integration</a>
+      <a href="#pricing" class="block text-[#D8C5B2] hover:text-[#FDFBF7] text-base font-medium">Institutional SaaS Tiers</a>
+      <div class="pt-4 border-t border-[#DDA15E]/20">
+        <button class="open-demo-modal-btn w-full py-3 rounded-xl btn-gold text-center font-bold">
+          Request Campus Demo (Dean Portal)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="pt-16 pb-20 sm:pt-24 sm:pb-32 overflow-hidden relative">
+      <!-- Ambient Crawling Glow Orbs -->
+      <div class="absolute -top-32 left-1/4 w-[600px] h-[500px] bg-[#BC6C25]/15 rounded-full blur-[140px] pointer-events-none animate-crawl-glow-1"></div>
+      <div class="absolute top-1/3 -right-20 w-[500px] h-[450px] bg-[#DDA15E]/15 rounded-full blur-[130px] pointer-events-none animate-crawl-glow-2"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Trust Ribbon -->
+        <div class="flex justify-center mb-6">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#241A14] border border-[#DDA15E]/40 text-xs text-[#E0A96D] font-mono shadow-md">
+            <span class="w-2 h-2 rounded-full bg-[#DDA15E] animate-pulse"></span>
+            <span>Wadhwani Foundation Venture Viability Validated</span>
+            <span class="text-[#8C6D53]">|</span>
+            <span class="text-[#FDFBF7] font-semibold">VIT-AP University Pilot</span>
+          </div>
+        </div>
+
+        <!-- Main Heading -->
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight text-[#FDFBF7] leading-[1.08] mb-6">
+            Over <span class="bg-gradient-to-r from-[#DDA15E] via-[#E0A96D] to-[#BC6C25] bg-clip-text text-transparent">80% of graduates</span> enter the workforce financially blind.
+            <span class="block mt-2 text-3xl sm:text-5xl lg:text-6xl font-display font-bold text-[#D8C5B2]">
+              Finova fixes this seamlessly.
+            </span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-[#EDE5DC] font-normal max-w-3xl mx-auto leading-relaxed mb-10">
+            The LMS-integrated SaaS platform delivering bite-sized, gamified financial education for university students — with <strong class="text-[#FDFBF7] font-semibold">zero faculty overhead</strong> and real-time competency analytics for Academic Deans.
+          </p>
+
+          <!-- Dual CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+            <button class="open-demo-modal-btn w-full sm:w-auto px-8 py-4 rounded-xl btn-gold text-base font-bold shadow-xl flex items-center justify-center gap-3">
+              <span>Book Institutional Dean Demo</span>
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </button>
+            <a href="#curriculum" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/40 text-[#FDFBF7] font-semibold text-base transition-all flex items-center justify-center gap-2">
+              <svg class="w-5 h-5 text-[#DDA15E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span>Explore 6 Course Chapters</span>
+            </a>
+          </div>
+
+          <!-- Academic & LMS Integration Badges -->
+          <div class="pt-8 border-t border-[#DDA15E]/20 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-[#D8C5B2] text-xs font-mono uppercase tracking-widest">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#38A169]"></span>
+              <span class="text-[#FDFBF7]">Canvas LTI 1.3 Certified</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#DDA15E]"></span>
+              <span class="text-[#FDFBF7]">Moodle Native Gradebook</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#BC6C25]"></span>
+              <span class="text-[#FDFBF7]">FERPA Compliant</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#E0A96D]"></span>
+              <span class="text-[#FDFBF7]">Zero Faculty Overhead</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- HERO INTERACTIVE PRODUCT SHOWCASE (CRAWLING BORDER FRAME) -->
+        <div class="mt-16 max-w-5xl mx-auto">
+          
+          <!-- View Toggle Switcher -->
+          <div class="flex items-center justify-center mb-6">
+            <div class="p-1.5 rounded-2xl bg-[#1A130F] border border-[#DDA15E]/30 inline-flex items-center gap-2">
+              <button id="heroToggleStudent" type="button" class="tab-warm-active px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all flex items-center gap-2">
+                <span>📱 Student Gamified App</span>
+                <span class="px-1.5 py-0.5 rounded text-[10px] bg-[#120D0A]/30 text-[#120D0A] font-mono">7-Day Streak</span>
+              </button>
+              <button id="heroToggleDean" type="button" class="tab-warm-inactive px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-2">
+                <span>📊 Dean Executive Console</span>
+                <span class="px-1.5 py-0.5 rounded text-[10px] bg-[#DDA15E]/20 text-[#DDA15E] font-mono">Real-Time</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Next-Level Crawling Conic Border Frame -->
+          <div class="crawling-border-frame shadow-2xl">
+            <div class="crawling-border-frame-inner p-6 sm:p-10">
+
+              <!-- Student Preview Mode -->
+              <div id="heroViewStudent" class="transition-all">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  
+                  <!-- Left: Mobile phone mockup preview -->
+                  <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-72 sm:w-80 rounded-[40px] p-4 bg-gradient-to-b from-[#241A14] to-[#120D0A] border-4 border-[#31231B] shadow-2xl relative">
+                      <!-- Notch -->
+                      <div class="w-24 h-4 bg-black rounded-full mx-auto mb-4 flex items-center justify-center">
+                        <div class="w-3 h-3 rounded-full bg-[#1A130F] border border-[#31231B]"></div>
+                      </div>
+
+                      <!-- Screen -->
+                      <div class="bg-[#1A130F] rounded-[28px] p-4 border border-[#DDA15E]/20 space-y-4">
+                        <div class="flex items-center justify-between pb-3 border-b border-[#DDA15E]/20">
+                          <div>
+                            <div class="text-[10px] text-[#D8C5B2] font-mono">VIT-AP University</div>
+                            <div class="text-xs font-bold text-[#FDFBF7]">Abhiram V. <span class="text-[10px] text-[#DDA15E] font-mono">Lvl 4</span></div>
+                          </div>
+                          <div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#BC6C25]/20 border border-[#DDA15E]/40 text-[#DDA15E] text-xs font-mono font-bold animate-fire-warm">
+                            🔥 7 Days
+                          </div>
+                        </div>
+
+                        <!-- Daily Mission -->
+                        <div class="p-3.5 rounded-xl bg-gradient-to-br from-[#31231B] to-[#1A130F] border border-[#DDA15E]/30">
+                          <div class="flex items-center justify-between text-[11px] text-[#E0A96D] font-mono mb-1">
+                            <span>TODAY'S MISSION</span>
+                            <span class="text-[#DDA15E] font-bold">+60 XP</span>
+                          </div>
+                          <div class="text-xs font-bold text-[#FDFBF7] mb-2">Decoding CTC: Basic vs In-Hand Net</div>
+                          <div class="w-full bg-[#120D0A] h-1.5 rounded-full overflow-hidden mb-2">
+                            <div class="bg-gradient-to-r from-[#DDA15E] to-[#BC6C25] h-full w-4/5 rounded-full"></div>
+                          </div>
+                          <div class="flex items-center justify-between text-[10px] text-[#D8C5B2]">
+                            <span>3 mins • Canvas Passback</span>
+                            <span class="text-[#38A169] font-semibold">Active</span>
+                          </div>
+                        </div>
+
+                        <!-- 3 Modules Quick Grid -->
+                        <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+                          <div class="p-2 rounded-lg bg-[#241A14] border border-[#DDA15E]/15">
+                            <div class="text-base mb-1">📜</div>
+                            <div class="text-[#FDFBF7] font-semibold">Salary</div>
+                            <div class="text-[9px] text-[#38A169]">92%</div>
+                          </div>
+                          <div class="p-2 rounded-lg bg-[#241A14] border border-[#DDA15E]/15">
+                            <div class="text-base mb-1">🥋</div>
+                            <div class="text-[#FDFBF7] font-semibold">Taxes</div>
+                            <div class="text-[9px] text-[#DDA15E]">88%</div>
+                          </div>
+                          <div class="p-2 rounded-lg bg-[#241A14] border border-[#DDA15E]/15">
+                            <div class="text-base mb-1">🛡️</div>
+                            <div class="text-[#FDFBF7] font-semibold">Runway</div>
+                            <div class="text-[9px] text-[#E0A96D]">85%</div>
+                          </div>
+                        </div>
+
+                        <!-- Campus Leaderboard -->
+                        <div class="p-3 rounded-xl bg-[#241A14]/80 border border-[#DDA15E]/20">
+                          <div class="flex items-center justify-between text-[10px] font-mono text-[#D8C5B2] mb-1">
+                            <span>CAMPUS RANK</span>
+                            <span class="text-[#DDA15E]">#4 of 480 Students</span>
+                          </div>
+                          <div class="flex items-center justify-between text-xs">
+                            <span class="text-[#FDFBF7] font-medium">B.Tech CSE '26</span>
+                            <span class="text-[#DDA15E] font-mono font-bold">1,420 XP</span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Right: Impact narrative -->
+                  <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-lg bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#E0A96D]">
+                      <span class="w-2 h-2 rounded-full bg-[#DDA15E]"></span>
+                      Gen Z Micro-Learning with Institutional Rigor
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-display font-bold text-[#FDFBF7] leading-tight">
+                      Curriculum grounded in real payroll economics, tax codes, and compound math.
+                    </h3>
+                    <p class="text-[#EDE5DC] text-sm sm:text-base leading-relaxed">
+                      Instead of dry 50-page course packs, Finova transforms real financial concepts from Zerodha Varsity, Harvard personal finance, and the Income Tax Department into bite-sized missions that fit seamlessly into collegiate routines.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                      <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                        <div class="text-2xl font-mono font-extrabold text-[#38A169] mb-1">94.2%</div>
+                        <div class="text-xs text-[#D8C5B2]">Micro-module completion rate across pilot cohorts</div>
+                      </div>
+                      <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                        <div class="text-2xl font-mono font-extrabold text-[#DDA15E] mb-1">3.8 mins</div>
+                        <div class="text-xs text-[#D8C5B2]">Average daily session time with zero faculty grading</div>
+                      </div>
+                    </div>
+
+                    <div class="pt-2">
+                      <a href="#curriculum" class="inline-flex items-center gap-2 text-[#DDA15E] hover:text-[#E0A96D] font-bold text-sm group">
+                        <span>Read Chapter 1 & Take Knowledge Check</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">→</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Dean Preview Mode (Toggled via JS) -->
+              <div id="heroViewDean" class="hidden space-y-6 transition-all">
+                <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#DDA15E]/20">
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-mono uppercase text-[#DDA15E] font-bold">Executive Dean Console</span>
+                      <span class="px-2.5 py-0.5 rounded text-[10px] bg-[#38A169]/20 text-[#38A169] border border-[#38A169]/40 font-mono">Active Academic Session</span>
+                    </div>
+                    <h3 class="text-xl sm:text-2xl font-display font-bold text-[#FDFBF7] mt-1">Dean Rajesh Sharma • Academic Affairs</h3>
+                    <p class="text-xs text-[#D8C5B2]">VIT-AP University • 4,850 Enrolled Students Across 5 Schools</p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#38A169] animate-pulse"></span>
+                    <span class="text-xs font-mono text-[#FDFBF7]">Canvas LTI 1.3: Real-Time Synced</span>
+                  </div>
+                </div>
+
+                <!-- KPI Cards -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                    <div class="text-xs text-[#D8C5B2] mb-1">Cohort Competency</div>
+                    <div class="text-2xl font-mono font-bold text-[#38A169]">84.6%</div>
+                    <div class="text-[11px] text-[#38A169] mt-1">↑ +38% vs Induction</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                    <div class="text-xs text-[#D8C5B2] mb-1">Faculty Workload</div>
+                    <div class="text-2xl font-mono font-bold text-[#DDA15E]">0 hrs</div>
+                    <div class="text-[11px] text-[#D8C5B2] mt-1">100% automated LMS grading</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                    <div class="text-xs text-[#D8C5B2] mb-1">Workplace Readiness</div>
+                    <div class="text-2xl font-mono font-bold text-[#E0A96D]">92.4%</div>
+                    <div class="text-[11px] text-[#D8C5B2] mt-1">Recruiter benchmark passed</div>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+                    <div class="text-xs text-[#D8C5B2] mb-1">Accreditation Dossier</div>
+                    <div class="text-2xl font-mono font-bold text-[#FDFBF7]">NAAC A++</div>
+                    <div class="text-[11px] text-[#D8C5B2] mt-1">1-click compliance export</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: DEEP COURSE CURRICULUM (AUTHENTIC CONTENT FROM MAJOR PLATFORMS) -->
+    <section id="curriculum" class="py-24 border-t border-[#DDA15E]/20 bg-[#1A130F]/90 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2">
+              Authentic Curriculum Modules
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight">
+              Curated Financial Curriculum for University Students
+            </h2>
+            <p class="text-[#D8C5B2] text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
+              Real content synthesized from <strong>Zerodha Varsity</strong>, <strong>Khan Academy Finance</strong>, <strong>Investopedia</strong>, and the <strong>Income Tax Department</strong>. Read the chapter, analyze the data, and test your knowledge.
+            </p>
+          </div>
+
+          <!-- Student Profile Status Pill -->
+          <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/30 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DDA15E] to-[#BC6C25] flex items-center justify-center text-xl text-[#120D0A] font-bold shadow-md">
+              🎓
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-sm text-[#FDFBF7]" id="studentName">Abhiram V.</span>
+                <span id="studentLevelBadge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#DDA15E]/20 text-[#DDA15E] border border-[#DDA15E]/40">
+                  Lvl 4: Tax & Budget Strategist
+                </span>
+              </div>
+              <div class="flex items-center gap-3 text-xs font-mono mt-1 text-[#D8C5B2]">
+                <span class="text-[#DDA15E] font-bold" id="studentStreakCounter">7 Days 🔥</span>
+                <span>•</span>
+                <span class="text-[#FDFBF7] font-bold" id="studentXpCounter">850 XP</span>
+              </div>
+              <div class="w-36 bg-[#120D0A] h-1.5 rounded-full mt-1.5 overflow-hidden">
+                <div id="studentXpBar" class="bg-gradient-to-r from-[#DDA15E] to-[#38A169] h-full rounded-full transition-all duration-300" style="width: 85%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curriculum Two-Column Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left: Chapter Navigator Tabs (Span 4) -->
+          <div class="lg:col-span-4 space-y-4">
+            <div class="flex items-center justify-between text-xs font-mono text-[#D8C5B2] uppercase tracking-wider px-1">
+              <span>Course Chapters</span>
+              <span class="text-[#DDA15E] font-bold">6 Modules</span>
+            </div>
+
+            <!-- Chapter buttons dynamically populated by app.js -->
+            <div id="courseTabsContainer" class="space-y-2.5"></div>
+
+            <!-- Live Student Activity Feed (Crawling Animation) -->
+            <div class="mt-8 p-5 rounded-2xl bg-[#241A14] border border-[#DDA15E]/25">
+              <div class="text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-3 flex items-center justify-between">
+                <span>Live Campus Activity Feed</span>
+                <span class="w-2 h-2 rounded-full bg-[#38A169] animate-ping"></span>
+              </div>
+              
+              <div class="feed-crawl-container">
+                <div class="feed-crawl-inner space-y-2.5 text-xs text-[#D8C5B2]">
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Abhiram V.</span> completed <em class="text-[#DDA15E]">Ch. 01 CTC Architecture</em> • <span class="text-[#38A169]">+60 XP</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Karthika S.</span> unlocked <em class="text-[#E0A96D]">14-Day Streak 🔥</em>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Dean Rajesh Sharma</span> exported <em class="text-[#FDFBF7]">NAAC Audit Dossier</em>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Anish R.</span> mastered <em class="text-[#DDA15E]">Section 87A Tax Slabs</em> • <span class="text-[#38A169]">+75 XP</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">VIT-AP CSE Cohort</span> reached <em class="text-[#38A169]">89.2% Competency</em>
+                  </div>
+                  <!-- Duplicated for seamless loop -->
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Abhiram V.</span> completed <em class="text-[#DDA15E]">Ch. 01 CTC Architecture</em> • <span class="text-[#38A169]">+60 XP</span>
+                  </div>
+                  <div class="p-2.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                    <span class="text-[#FDFBF7] font-bold">Karthika S.</span> unlocked <em class="text-[#E0A96D]">14-Day Streak 🔥</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Chapter Reader & Interactive Knowledge Check (Span 8) -->
+          <div class="lg:col-span-8">
+            <div id="courseChapterViewer" class="p-6 sm:p-10 rounded-3xl bg-[#241A14] border border-[#DDA15E]/30 shadow-2xl min-h-[550px]">
+              <!-- Dynamically populated via app.js -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: THE PROBLEM & IMPACT BENTO GRID -->
+    <section id="problem-bento" class="py-24 border-t border-[#DDA15E]/20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#BC6C25]/20 border border-[#DDA15E]/35 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-3">
+            Institutional Risk & Student Pain
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight mb-4">
+            The Hidden Crisis of Campus Life
+          </h2>
+          <p class="text-[#D8C5B2] text-base sm:text-lg">
+            Engineering, medicine, and business curricula produce world-class technical talent. Yet over 80% graduate unable to decode a basic Form 16 or calculate post-tax take-home pay.
+          </p>
+        </div>
+
+        <!-- Asymmetric Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-12 gap-6">
+
+          <!-- Bento Card 1: 80% Crisis Big Number (Span 7) -->
+          <div class="lg:col-span-7 card-espresso rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-lg bg-[#BC6C25]/20 text-[#DDA15E] font-mono text-xs border border-[#DDA15E]/30">NFEC National Survey Data</span>
+                <span class="text-xs font-mono text-[#D8C5B2]">Higher-Ed Workforce Metric</span>
+              </div>
+              <div class="text-6xl sm:text-7xl font-mono font-extrabold text-[#FDFBF7] tracking-tight mb-2">
+                80<span class="text-[#DDA15E]">%</span>
+              </div>
+              <h3 class="text-2xl font-display font-bold text-[#FDFBF7] mb-3">
+                Of College Graduates Enter the Workforce Financially Illiterate
+              </h3>
+              <p class="text-[#EDE5DC] text-sm sm:text-base leading-relaxed mb-6">
+                Students land dream entry-level software, consulting, and research roles, only to experience intense financial anxiety when confronted with complex tax deduction schemes (TDS, Old vs New Regime), compounding credit card interest, and student loan amortizations.
+              </p>
+            </div>
+
+            <!-- Mini stat row -->
+            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-[#DDA15E]/20 text-center font-mono">
+              <div class="p-3 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                <div class="text-lg font-bold text-[#DDA15E]">76%</div>
+                <div class="text-[11px] text-[#D8C5B2]">Salary shock on first paystub</div>
+              </div>
+              <div class="p-3 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                <div class="text-lg font-bold text-[#E53E3E]">68%</div>
+                <div class="text-[11px] text-[#D8C5B2]">Carry high-cost debt</div>
+              </div>
+              <div class="p-3 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                <div class="text-lg font-bold text-[#38A169]">0 hrs</div>
+                <div class="text-[11px] text-[#D8C5B2]">Practical money training in college</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 2: Voice of Students (Span 5) -->
+          <div class="lg:col-span-5 card-espresso rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-4">
+                <span class="w-2 h-2 rounded-full bg-[#DDA15E]"></span>
+                Student Interviews (GOOTB Validation)
+              </div>
+              <blockquote class="text-lg text-[#FDFBF7] font-medium italic mb-6 leading-relaxed">
+                "We spent 4 years mastering data structures and compilers, but when I received my ₹14 LPA offer letter, I had no clue what 'Gratuity', 'PF', or '87A Rebate' meant. I thought I would take home ₹1.1 Lakhs a month. The shock was real."
+              </blockquote>
+            </div>
+
+            <div class="flex items-center gap-3 pt-4 border-t border-[#DDA15E]/20">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#DDA15E] to-[#BC6C25] flex items-center justify-center font-bold text-[#120D0A] text-sm">
+                AV
+              </div>
+              <div>
+                <div class="text-sm font-bold text-[#FDFBF7]">Abhiram, Anish & Karthika</div>
+                <div class="text-xs text-[#D8C5B2]">Final-Year Students, VIT-AP University</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 3: The Dean's Burden & Institutional Gaps (Span 6) -->
+          <div class="lg:col-span-6 card-espresso rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-lg bg-[#BC6C25]/20 text-[#DDA15E] font-mono text-xs border border-[#DDA15E]/30">The Institutional Dilemma</span>
+                <span class="text-xs text-[#D8C5B2] font-mono">Dean Rajesh Sharma Persona</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-display font-bold text-[#FDFBF7] mb-3">
+                Why Current University Alternatives Fail
+              </h3>
+              <div class="space-y-3 mb-6">
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15 flex items-start gap-3">
+                  <span class="text-[#E53E3E] font-bold">✕</span>
+                  <p class="text-xs sm:text-sm text-[#EDE5DC]">
+                    <strong class="text-[#FDFBF7]">One-off guest lectures:</strong> Expensive, poorly attended on weekends, and zero long-term retention.
+                  </p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15 flex items-start gap-3">
+                  <span class="text-[#E53E3E] font-bold">✕</span>
+                  <p class="text-xs sm:text-sm text-[#EDE5DC]">
+                    <strong class="text-[#FDFBF7]">Generic online links & PDFs:</strong> Negligible student engagement (&lt;5% open rates) and outdated tax references.
+                  </p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15 flex items-start gap-3">
+                  <span class="text-[#E53E3E] font-bold">✕</span>
+                  <p class="text-xs sm:text-sm text-[#EDE5DC]">
+                    <strong class="text-[#FDFBF7]">Faculty overload:</strong> Existing professors lack capacity or specialized finance credentials to teach payroll economics.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#31231B] border border-[#DDA15E]/30 text-xs text-[#FDFBF7] flex items-center justify-between">
+              <span><strong>The Finova Fix:</strong> Zero faculty workload with automated LMS integration.</span>
+              <span class="text-[#38A169] font-bold font-mono">100% Turnkey</span>
+            </div>
+          </div>
+
+          <!-- Bento Card 4: Jobs-to-be-Done (Functional, Emotional, Social) (Span 6) -->
+          <div class="lg:col-span-6 card-espresso rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 text-xs font-mono text-[#38A169] uppercase tracking-wider mb-4">
+                <span class="w-2 h-2 rounded-full bg-[#38A169]"></span>
+                Jobs-to-be-Done (JTBD) Framework
+              </div>
+              <h3 class="text-xl sm:text-2xl font-display font-bold text-[#FDFBF7] mb-4">
+                Aligned with Every Institutional Metric
+              </h3>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                  <div class="text-sm font-bold text-[#FDFBF7] mb-1 flex items-center gap-1.5">
+                    <span>💼</span> Functional
+                  </div>
+                  <p class="text-[11px] text-[#D8C5B2] leading-relaxed">
+                    Integrate practical financial training into existing university programs with automated gradebook sync.
+                  </p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                  <div class="text-sm font-bold text-[#FDFBF7] mb-1 flex items-center gap-1.5">
+                    <span>❤️</span> Emotional
+                  </div>
+                  <p class="text-[11px] text-[#D8C5B2] leading-relaxed">
+                    Alleviate post-graduation money anxiety. Feel proud of the institution's comprehensive student-readiness.
+                  </p>
+                </div>
+
+                <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/15">
+                  <div class="text-sm font-bold text-[#FDFBF7] mb-1 flex items-center gap-1.5">
+                    <span>🏛️</span> Social
+                  </div>
+                  <p class="text-[11px] text-[#D8C5B2] leading-relaxed">
+                    Gain distinction among university trustees, accreditation boards (NAAC/ABET), and top corporate recruiters.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between text-xs font-mono text-[#D8C5B2] pt-3 border-t border-[#DDA15E]/20">
+              <span>Institution: VIT-AP University, Amaravati</span>
+              <span class="text-[#DDA15E] font-semibold">Venture Viability Matrix</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE FINANCIAL & TAX CALCULATOR (WARM CHOCOLATE & CARAMEL) -->
+    <section id="calculator" class="py-24 border-t border-[#DDA15E]/20 bg-[#1A130F] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2">
+            Interactive Working Preview
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight mb-4">
+            Salary, Tax & Budget Engine
+          </h2>
+          <p class="text-[#D8C5B2] text-base sm:text-lg">
+            Experience the interactive calculator widget university students use to decode offer letters, estimate take-home pay, and plan their 50/30/20 emergency shields.
+          </p>
+        </div>
+
+        <div class="card-espresso rounded-3xl p-6 sm:p-10 border border-[#DDA15E]/30 shadow-2xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            
+            <!-- Left Side: Inputs (Span 5) -->
+            <div class="lg:col-span-5 space-y-6">
+              <div class="flex items-center justify-between pb-4 border-b border-[#DDA15E]/20">
+                <span class="text-sm font-bold text-[#FDFBF7] uppercase tracking-wider font-mono">1. Offer Parameters</span>
+                <!-- Tax Regime Toggle -->
+                <div class="p-1 rounded-xl bg-[#120D0A] border border-[#DDA15E]/30 flex items-center gap-1 text-xs font-mono">
+                  <button id="regimeNew" type="button" class="px-3 py-1 rounded-lg bg-[#DDA15E] text-[#120D0A] font-bold transition-all">New Regime</button>
+                  <button id="regimeOld" type="button" class="px-3 py-1 rounded-lg bg-[#241A14] text-[#D8C5B2] font-medium transition-all">Old Regime</button>
+                </div>
+              </div>
+
+              <!-- Input: Gross Annual CTC -->
+              <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <label for="calcCtc" class="font-medium text-[#FDFBF7]">Annual Cost to Company (CTC)</label>
+                  <span id="calcCtcDisplay" class="font-mono font-bold text-[#DDA15E] text-base">₹12,00,000</span>
+                </div>
+                <input id="calcCtc" type="range" min="300000" max="3600000" step="50000" value="1200000" class="w-full cursor-pointer">
+                <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                  <span>₹3 Lakhs</span>
+                  <span>₹18 Lakhs</span>
+                  <span>₹36 Lakhs</span>
+                </div>
+              </div>
+
+              <!-- Input: Monthly Education Loan EMI -->
+              <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <label for="calcLoan" class="font-medium text-[#FDFBF7]">Monthly Student Loan / EMI</label>
+                  <span id="calcLoanDisplay" class="font-mono font-bold text-[#E53E3E] text-base">₹12,000</span>
+                </div>
+                <input id="calcLoan" type="range" min="0" max="40000" step="1000" value="12000" class="w-full cursor-pointer">
+                <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                  <span>₹0 (Debt-free)</span>
+                  <span>₹20,000</span>
+                  <span>₹40,000</span>
+                </div>
+              </div>
+
+              <!-- Input: Emergency Fund Target (Months) -->
+              <div class="space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <label for="calcEmergency" class="font-medium text-[#FDFBF7]">Target Emergency Runway</label>
+                  <span id="calcEmergencyDisplay" class="font-mono font-bold text-[#38A169] text-base">4 Months Runway</span>
+                </div>
+                <input id="calcEmergency" type="range" min="1" max="12" step="1" value="4" class="w-full cursor-pointer">
+                <div class="flex justify-between text-[10px] text-[#D8C5B2] font-mono">
+                  <span>1 Mo</span>
+                  <span>6 Mos (Rec.)</span>
+                  <span>12 Mos</span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/20 text-xs text-[#D8C5B2] leading-relaxed">
+                <span class="text-[#DDA15E] font-bold font-mono">FINOVA ALGORITHM:</span> Standard deduction of ₹75,000 is automatically applied under the revised New Tax Regime with full Section 87A rebate math.
+              </div>
+
+            </div>
+
+            <!-- Right Side: Calculation Outputs (Span 7) -->
+            <div class="lg:col-span-7 bg-[#241A14] rounded-2xl p-6 sm:p-8 border border-[#DDA15E]/20 flex flex-col justify-between">
+              
+              <div>
+                <div class="flex items-center justify-between pb-4 border-b border-[#DDA15E]/20 mb-6">
+                  <span class="text-sm font-bold text-[#FDFBF7] uppercase tracking-wider font-mono">2. Monthly Take-Home Breakdown</span>
+                  <div class="flex items-center gap-1.5 text-xs font-mono text-[#38A169]">
+                    <span class="w-2 h-2 rounded-full bg-[#38A169]"></span>
+                    <span>In-Hand Ratio: <strong id="resInHandRatio" class="text-[#FDFBF7]">82%</strong></span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                  <div class="p-3.5 rounded-xl bg-[#1A130F] border border-[#DDA15E]/20">
+                    <div class="text-[11px] text-[#D8C5B2]">Gross Monthly</div>
+                    <div id="resMonthlyGross" class="text-lg font-mono font-bold text-[#FDFBF7]">₹1,00,000</div>
+                    <div class="text-[10px] text-[#D8C5B2]">CTC ÷ 12</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-[#38A169]/15 border border-[#38A169]/40">
+                    <div class="text-[11px] text-[#38A169] font-bold">Net In-Hand</div>
+                    <div id="resInHand" class="text-lg font-mono font-bold text-[#FDFBF7]">₹82,450</div>
+                    <div class="text-[10px] text-[#38A169]">Lands in Bank</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-[#E53E3E]/15 border border-[#E53E3E]/40">
+                    <div class="text-[11px] text-[#E53E3E]">TDS / Tax (Mo)</div>
+                    <div id="resTDS" class="text-lg font-mono font-bold text-[#FDFBF7]">₹6,200</div>
+                    <div class="text-[10px] text-[#D8C5B2]">Withholding</div>
+                  </div>
+                  <div class="p-3.5 rounded-xl bg-[#DDA15E]/15 border border-[#DDA15E]/40">
+                    <div class="text-[11px] text-[#DDA15E]">PF + PT Deduct</div>
+                    <div id="resEPF" class="text-lg font-mono font-bold text-[#FDFBF7]">₹1,800</div>
+                    <div class="text-[10px] text-[#D8C5B2]">+ ₹200 PT</div>
+                  </div>
+                </div>
+
+                <!-- 50/30/20 Rule Distribution -->
+                <div class="p-4 rounded-xl bg-[#1A130F] border border-[#DDA15E]/20 mb-6">
+                  <div class="text-xs font-mono text-[#D8C5B2] uppercase tracking-wider mb-3 flex items-center justify-between">
+                    <span>50-30-20 Smart Rule Allocation</span>
+                    <span class="text-[#DDA15E] font-bold">Harvard Benchmark</span>
+                  </div>
+                  <div class="grid grid-cols-3 gap-3 text-center">
+                    <div class="p-3 rounded-lg bg-[#241A14]">
+                      <div class="text-[10px] text-[#D8C5B2]">Needs (50%)</div>
+                      <div id="resNeeds" class="text-sm font-mono font-bold text-[#FDFBF7]">₹41,225</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-[#241A14]">
+                      <div class="text-[10px] text-[#D8C5B2]">Wants (30%)</div>
+                      <div id="resWants" class="text-sm font-mono font-bold text-[#FDFBF7]">₹24,735</div>
+                    </div>
+                    <div class="p-3 rounded-lg bg-[#241A14]">
+                      <div class="text-[10px] text-[#D8C5B2]">Savings & Shield (20%)</div>
+                      <div id="resSavings" class="text-sm font-mono font-bold text-[#38A169]">₹16,490</div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Bottom Row: Emergency Target -->
+              <div class="pt-4 border-t border-[#DDA15E]/20 flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+                <div>
+                  <span class="text-[#D8C5B2]">Target Emergency Runway: </span>
+                  <strong id="resEmergencyTarget" class="text-[#38A169] text-sm">₹1,60,000</strong>
+                  <span id="resEmergencyTimeline" class="ml-2 text-[11px] text-[#D8C5B2]">(9.7 mos to goal)</span>
+                </div>
+                <div>
+                  <span class="text-[#D8C5B2]">Annual Tax Liability: </span>
+                  <strong id="resAnnualTax" class="text-[#E53E3E] text-sm">₹74,400</strong>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: DATA & DEAN ADMINISTRATIVE ANALYTICS -->
+    <section id="dean-analytics" class="py-24 border-t border-[#DDA15E]/20 bg-[#120D0A] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2">
+              For University Deans & Academic Directors
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight">
+              Real-Time Institutional Competency Analytics
+            </h2>
+            <p class="text-[#D8C5B2] text-sm sm:text-base mt-2 max-w-2xl">
+              Track multi-department cohorts without requiring faculty to manually grade or prepare curricula. 
+              Designed for leaders like Dean Rajesh Sharma to prove graduate career readiness.
+            </p>
+          </div>
+
+          <!-- Department Switcher Dropdown -->
+          <div class="p-2.5 rounded-2xl bg-[#1A130F] border border-[#DDA15E]/30 flex items-center gap-3">
+            <label for="deanDeptSelect" class="text-xs font-mono text-[#D8C5B2] whitespace-nowrap pl-2">Cohort View:</label>
+            <select id="deanDeptSelect" class="bg-[#241A14] border border-[#DDA15E]/30 text-[#FDFBF7] text-xs sm:text-sm rounded-xl px-3 py-2 font-medium focus:outline-none focus:border-[#DDA15E] cursor-pointer">
+              <option value="all">All Academic Cohorts (4,850 Students)</option>
+              <option value="cse">School of Computer Science & Eng (2,240)</option>
+              <option value="business">School of Management & Commerce (1,120)</option>
+              <option value="biotech">Department of Biotechnology (790)</option>
+              <option value="law">School of Law & Governance (700)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card-espresso rounded-3xl p-6 sm:p-10 border border-[#DDA15E]/30 shadow-2xl">
+          
+          <!-- Key KPI Cards Row -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/20">
+              <div class="text-xs text-[#D8C5B2] mb-1">Enrolled Students</div>
+              <div id="deanMetricStudents" class="text-2xl sm:text-3xl font-mono font-bold text-[#FDFBF7]">4,850</div>
+              <div class="text-[11px] text-[#DDA15E] mt-1 flex items-center gap-1 font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span>
+                <span>Active: <span id="deanMetricActive">93.4%</span></span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/20">
+              <div class="text-xs text-[#D8C5B2] mb-1">Overall Competency</div>
+              <div id="deanMetricCompetency" class="text-2xl sm:text-3xl font-mono font-bold text-[#38A169]">84.6%</div>
+              <div id="deanMetricGrowth" class="text-[11px] text-[#38A169] mt-1 font-mono">
+                +38% vs Induction
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/20">
+              <div class="text-xs text-[#D8C5B2] mb-1">Daily Micro-Time</div>
+              <div id="deanMetricTime" class="text-2xl sm:text-3xl font-mono font-bold text-[#DDA15E]">4.2m / day</div>
+              <div class="text-[11px] text-[#D8C5B2] mt-1 font-mono">Bite-sized microlearning</div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-[#241A14] border border-[#DDA15E]/20">
+              <div class="text-xs text-[#D8C5B2] mb-1">LMS Passback Sync</div>
+              <div id="deanMetricLmsStatus" class="text-base sm:text-lg font-mono font-bold text-[#E0A96D] truncate">99.8% (Canvas & Moodle)</div>
+              <div class="text-[11px] text-[#38A169] mt-1 font-mono">LTI Advantage 1.3</div>
+            </div>
+          </div>
+
+          <!-- Trend Graph & Cohort Deep-Dive Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <!-- SVG Curve Trend Chart (Span 8) -->
+            <div class="lg:col-span-8 p-6 rounded-2xl bg-[#1A130F] border border-[#DDA15E]/20">
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h4 class="text-base font-bold text-[#FDFBF7]">Cohort Financial Competency Trajectory</h4>
+                  <p class="text-xs text-[#D8C5B2]">6-Month progression curve from campus onboarding to final placement</p>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-mono">
+                  <span class="inline-block w-3 h-3 rounded-full bg-[#DDA15E]"></span>
+                  <span class="text-[#D8C5B2]">Competency Benchmark (%)</span>
+                </div>
+              </div>
+
+              <!-- Interactive SVG Chart -->
+              <div class="relative w-full aspect-[600/220] overflow-hidden">
+                <svg viewBox="0 0 600 220" class="w-full h-full">
+                  <defs>
+                    <linearGradient id="warmChartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#DDA15E" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#DDA15E" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+
+                  <line x1="40" y1="30" x2="570" y2="30" stroke="rgba(221,161,94,0.12)" stroke-dasharray="4"/>
+                  <line x1="40" y1="80" x2="570" y2="80" stroke="rgba(221,161,94,0.12)" stroke-dasharray="4"/>
+                  <line x1="40" y1="130" x2="570" y2="130" stroke="rgba(221,161,94,0.12)" stroke-dasharray="4"/>
+                  <line x1="40" y1="180" x2="570" y2="180" stroke="rgba(221,161,94,0.25)"/>
+
+                  <text x="15" y="34" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono">100%</text>
+                  <text x="15" y="84" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono">75%</text>
+                  <text x="15" y="134" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono">50%</text>
+                  <text x="15" y="184" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono">25%</text>
+
+                  <text x="50" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Month 1</text>
+                  <text x="150" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Month 2</text>
+                  <text x="250" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Month 3</text>
+                  <text x="350" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Month 4</text>
+                  <text x="450" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Month 5</text>
+                  <text x="550" y="204" fill="#D8C5B2" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Placement Ready</text>
+
+                  <path id="deanChartArea" d="" fill="url(#warmChartGradient)"/>
+                  <path id="deanChartPath" d="" fill="none" stroke="#DDA15E" stroke-width="3.5" stroke-linecap="round"/>
+
+                  <g id="deanChartPointsGroup"></g>
+                </svg>
+              </div>
+
+            </div>
+
+            <!-- Deep Dive Insight Highlights (Span 4) -->
+            <div class="lg:col-span-4 space-y-4">
+              <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/20">
+                <div class="text-xs font-mono text-[#38A169] mb-1 flex items-center gap-1.5 font-bold">
+                  <span>🏆</span> Top Mastered Topic
+                </div>
+                <div id="deanMetricTopSkill" class="text-sm font-bold text-[#FDFBF7]">Tax Filing (ITR-1 & Section 87A)</div>
+                <div class="text-xs text-[#D8C5B2] mt-1">94% pass rate across initial attempts</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/20">
+                <div class="text-xs font-mono text-[#DDA15E] mb-1 flex items-center gap-1.5 font-bold">
+                  <span>⚠️</span> Cohort Attention Flag
+                </div>
+                <div id="deanMetricRisk" class="text-sm font-bold text-[#FDFBF7]">1st Year Humanities (Nudge sent via Canvas)</div>
+                <div class="text-xs text-[#D8C5B2] mt-1">Nudge sequence automatically triggered via Canvas</div>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/20">
+                <div class="text-xs font-mono text-[#E0A96D] mb-1 flex items-center gap-1.5 font-bold">
+                  <span>🎓</span> Accreditation Export
+                </div>
+                <div class="text-sm font-bold text-[#FDFBF7]">NAAC & ABET Compliant</div>
+                <div class="text-xs text-[#D8C5B2] mt-1">One-click PDF / Excel audit dossier export</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: NATIVE LMS INTEGRATION (CANVAS & MOODLE) -->
+    <section id="lms-integration" class="py-24 border-t border-[#DDA15E]/20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#38A169]/20 border border-[#38A169]/40 text-xs font-mono text-[#38A169] uppercase tracking-wider font-bold">
+              1-Click Institutional Deployment
+            </div>
+            <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight leading-tight">
+              Plugs right into Canvas & Moodle.
+              <span class="block text-[#D8C5B2] text-2xl sm:text-4xl mt-1">Zero code. Zero faculty headache.</span>
+            </h2>
+            <p class="text-[#EDE5DC] text-base sm:text-lg leading-relaxed">
+              Finova utilizes LTI 1.3 Advantage standards. Course rosters, section enrollments, and competency completions pass back automatically into your institutional registrar and gradebook.
+            </p>
+
+            <div class="space-y-4 pt-2">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#38A169]/20 text-[#38A169] flex items-center justify-center text-xs font-bold mt-0.5">✓</div>
+                <div>
+                  <h4 class="text-[#FDFBF7] font-semibold text-sm">Automated Roster Synchronization</h4>
+                  <p class="text-xs text-[#D8C5B2]">Single Sign-On (SSO) via SAML, Okta, Microsoft Azure AD, or Google Workspace.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#38A169]/20 text-[#38A169] flex items-center justify-center text-xs font-bold mt-0.5">✓</div>
+                <div>
+                  <h4 class="text-[#FDFBF7] font-semibold text-sm">Automated Gradebook Passback</h4>
+                  <p class="text-xs text-[#D8C5B2]">Scores, XP milestones, and verified micro-credentials sync instantly with zero teacher intervention.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#38A169]/20 text-[#38A169] flex items-center justify-center text-xs font-bold mt-0.5">✓</div>
+                <div>
+                  <h4 class="text-[#FDFBF7] font-semibold text-sm">Enterprise Data Privacy (FERPA Aligned)</h4>
+                  <p class="text-xs text-[#D8C5B2]">Strict zero-retention policy for student personal financial accounts. Student data is never sold or monetized.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button class="open-demo-modal-btn px-6 py-3.5 rounded-xl btn-gold text-sm font-bold flex items-center gap-2">
+                <span>Request LTI Integration Sandbox</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- LMS Visual Card Preview -->
+          <div class="lg:col-span-6">
+            <div class="card-espresso rounded-3xl p-6 border border-[#DDA15E]/30 shadow-2xl relative">
+              <div class="flex items-center justify-between pb-4 border-b border-[#DDA15E]/20 mb-4">
+                <div class="flex items-center gap-2">
+                  <div class="w-3 h-3 rounded-full bg-[#E53E3E]"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#DDA15E]"></div>
+                  <div class="w-3 h-3 rounded-full bg-[#38A169]"></div>
+                </div>
+                <div class="px-4 py-1 rounded-md bg-[#120D0A] text-[11px] font-mono text-[#D8C5B2] border border-[#DDA15E]/20 truncate max-w-xs">
+                  canvas.vitap.ac.in/courses/4092/finova-lti
+                </div>
+                <div class="text-xs font-mono text-[#38A169] flex items-center gap-1 font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span>
+                  LTI 1.3 Active
+                </div>
+              </div>
+
+              <!-- Canvas / Finova Embed Preview Interface -->
+              <div class="rounded-xl bg-[#120D0A] p-4 border border-[#DDA15E]/20 space-y-4">
+                <div class="flex items-center justify-between text-xs pb-3 border-b border-[#DDA15E]/20">
+                  <div class="flex items-center gap-2">
+                    <span class="font-bold text-[#FDFBF7]">Course: CSE 401 — Professional Readiness</span>
+                    <span class="text-[#D8C5B2]">|</span>
+                    <span class="text-[#D8C5B2]">Fall Semester</span>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded bg-[#DDA15E]/20 text-[#DDA15E] font-mono text-[10px] font-bold">Embedded LTI Module</span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-[#241A14] border border-[#DDA15E]/25 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-[#DDA15E]/20 text-[#DDA15E] flex items-center justify-center font-bold text-sm">
+                        ⚡
+                      </div>
+                      <div>
+                        <div class="text-xs font-bold text-[#FDFBF7]">Ch. 02: Income Tax Slabs & 87A Strategy</div>
+                        <div class="text-[10px] text-[#D8C5B2]">Due: Friday 11:59 PM • 75 XP Points</div>
+                      </div>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-[#38A169]/20 text-[#38A169] font-mono text-xs font-bold">Passed (100%)</span>
+                  </div>
+                  
+                  <div class="flex items-center justify-between text-[11px] text-[#D8C5B2] pt-2 border-t border-[#DDA15E]/15 font-mono">
+                    <span>Gradebook: Auto-passed to Registrar</span>
+                    <span class="text-[#DDA15E]">0 Faculty Action Req.</span>
+                  </div>
+                </div>
+
+                <div class="p-3 rounded-lg bg-[#1A130F] border border-[#DDA15E]/15 text-[11px] text-[#D8C5B2] flex items-center justify-between font-mono">
+                  <span>Student ID: VIT2023CSE0482</span>
+                  <span class="text-[#38A169]">Canvas Grade Sync: Verified</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: PRICING & SAAS TIERS -->
+    <section id="pricing" class="py-24 border-t border-[#DDA15E]/20 bg-[#1A130F] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2">
+            Institutional SaaS & Student Tiers
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight mb-4">
+            Predictable, Outcome-Based Higher Ed Pricing
+          </h2>
+          <p class="text-[#D8C5B2] text-base sm:text-lg">
+            Whether starting with a single department pilot or rolling out campus-wide across thousands of students.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          
+          <!-- Tier 1: Department Pilot -->
+          <div class="card-espresso rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2 font-bold">Department Pilot</div>
+              <h3 class="text-2xl font-display font-bold text-[#FDFBF7] mb-2">Single Cohort</h3>
+              <p class="text-xs text-[#D8C5B2] mb-6">Ideal for engineering or business schools testing student outcome improvements.</p>
+              
+              <div class="mb-6 pb-6 border-b border-[#DDA15E]/20">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-mono font-extrabold text-[#FDFBF7]">₹80</span>
+                  <span class="text-xs text-[#D8C5B2] font-mono">/ student / year</span>
+                </div>
+                <div class="text-[11px] text-[#D8C5B2] mt-1 font-mono">Up to 1,000 enrolled students</div>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-[#EDE5DC] mb-8">
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>All 6 Deep Curriculum Chapters</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Interactive Salary & Tax Calculator</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Canvas or Moodle LTI 1.3 Sync</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Departmental Competency Reports</span>
+                </li>
+              </ul>
+            </div>
+
+            <button class="open-demo-modal-btn w-full py-3 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/30 text-[#FDFBF7] font-bold text-xs transition-all">
+              Launch Department Pilot
+            </button>
+          </div>
+
+          <!-- Tier 2: Campus-Wide Enterprise (Featured / Recommended) -->
+          <div class="card-espresso rounded-3xl p-8 border-2 border-[#DDA15E] flex flex-col justify-between relative shadow-2xl shadow-[#BC6C25]/20">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#DDA15E] to-[#BC6C25] text-[#120D0A] text-[11px] font-mono font-bold uppercase tracking-wider shadow-md">
+              Most Popular for Universities
+            </div>
+
+            <div>
+              <div class="text-xs font-mono text-[#DDA15E] uppercase tracking-wider mb-2 font-bold">Campus Enterprise</div>
+              <h3 class="text-2xl font-display font-bold text-[#FDFBF7] mb-2">University-Wide SaaS</h3>
+              <p class="text-xs text-[#D8C5B2] mb-6">Complete institution-wide rollout with multi-department dean analytics.</p>
+              
+              <div class="mb-6 pb-6 border-b border-[#DDA15E]/20">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-mono font-extrabold text-[#FDFBF7]">₹60</span>
+                  <span class="text-xs text-[#D8C5B2] font-mono">/ student / year</span>
+                </div>
+                <div class="text-[11px] text-[#38A169] mt-1 font-mono font-bold">Volume discount (3,000+ students)</div>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-[#EDE5DC] mb-8">
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>All Advanced Curriculum Modules</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Executive Dean Analytics Dashboard</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Native Canvas, Moodle & Blackboard LTI</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>NAAC / ABET Accreditation One-Click Dossier</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Dedicated LMS Integration Specialist</span>
+                </li>
+              </ul>
+            </div>
+
+            <button class="open-demo-modal-btn w-full py-3.5 rounded-xl btn-gold font-bold text-sm shadow-lg">
+              Request University Proposal
+            </button>
+          </div>
+
+          <!-- Tier 3: Student Freemium / Direct -->
+          <div class="card-espresso rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono text-[#38A169] uppercase tracking-wider mb-2 font-bold">Student Freemium</div>
+              <h3 class="text-2xl font-display font-bold text-[#FDFBF7] mb-2">Direct Student</h3>
+              <p class="text-xs text-[#D8C5B2] mb-6">Always free for students accessing foundational financial literacy independently.</p>
+              
+              <div class="mb-6 pb-6 border-b border-[#DDA15E]/20">
+                <div class="flex items-baseline gap-1">
+                  <span class="text-4xl font-mono font-extrabold text-[#FDFBF7]">Free</span>
+                  <span class="text-xs text-[#D8C5B2] font-mono">Forever</span>
+                </div>
+                <div class="text-[11px] text-[#D8C5B2] mt-1 font-mono">Personal use & mobile web</div>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-[#EDE5DC] mb-8">
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Foundational Paystub & Tax Chapters</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Salary & Emergency Calculator</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="text-[#38A169] font-bold">✓</span>
+                  <span>Daily Streak Tracking</span>
+                </li>
+                <li class="flex items-center gap-2.5 text-[#D8C5B2]/60">
+                  <span>✕</span>
+                  <span>LMS Institutional Passback (Req. Campus Plan)</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#curriculum" class="w-full py-3 rounded-xl bg-[#241A14] hover:bg-[#31231B] border border-[#DDA15E]/30 text-[#FDFBF7] font-bold text-xs text-center block transition-all">
+              Read Free Chapters Now
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER -->
+    <section class="py-20 border-t border-[#DDA15E]/20 relative overflow-hidden bg-gradient-to-b from-[#1A130F] to-[#120D0A]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-[#FDFBF7] tracking-tight mb-4">
+          Ready to equip your next graduating batch?
+        </h2>
+        <p class="text-[#EDE5DC] text-base sm:text-lg max-w-2xl mx-auto mb-8">
+          Join institutions preparing workplace-ready graduates. Deploy the Finova LMS sandbox in under 15 minutes.
+        </p>
+        <button class="open-demo-modal-btn px-8 py-4 rounded-xl btn-gold text-base font-bold shadow-2xl">
+          Request Campus Demo & Dean Sandbox Access
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- COMPREHENSIVE FOOTER -->
+  <footer class="border-t border-[#DDA15E]/20 bg-[#120D0A] py-16 relative z-10 text-[#D8C5B2] text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+        
+        <!-- Brand & Origin (Span 2) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-[#DDA15E] flex items-center justify-center text-[#120D0A] font-extrabold text-base">
+              F
+            </div>
+            <span class="font-display font-bold text-xl text-[#FDFBF7]">Finova</span>
+          </div>
+          <p class="text-[#D8C5B2] text-xs leading-relaxed max-w-sm">
+            Finova is an LMS-integrated financial literacy SaaS delivering gamified micro-learning for university students and real-time competency analytics for Academic Deans.
+          </p>
+          <div class="text-xs text-[#8C6D53] font-mono space-y-1">
+            <p>Conceived & engineered at <strong class="text-[#D8C5B2]">VIT-AP University</strong>, Amaravati, Andhra Pradesh.</p>
+            <p>Validated under the <strong class="text-[#D8C5B2]">Wadhwani Foundation</strong> Venture Viability Framework.</p>
+          </div>
+        </div>
+
+        <!-- Solutions -->
+        <div class="space-y-3">
+          <div class="text-[#FDFBF7] font-bold text-xs font-mono uppercase tracking-wider">Curriculum</div>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">Paystub & CTC (Ch 1)</a></li>
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">Tax Regimes & 87A (Ch 2)</a></li>
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">50/30/20 Runway (Ch 3)</a></li>
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">CIBIL 750+ Credit (Ch 4)</a></li>
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">Index Investing (Ch 5)</a></li>
+            <li><a href="#curriculum" class="hover:text-[#FDFBF7] transition-colors">Insurance Guard (Ch 6)</a></li>
+          </ul>
+        </div>
+
+        <!-- Academic & Compliance -->
+        <div class="space-y-3">
+          <div class="text-[#FDFBF7] font-bold text-xs font-mono uppercase tracking-wider">Compliance & Standards</div>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span> Canvas LTI Advantage 1.3</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span> Moodle Native Plugins</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span> FERPA Privacy Aligned</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span> NAAC / ABET Criteria 5 Aligned</li>
+            <li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#38A169]"></span> Student Data Privacy Consortium</li>
+          </ul>
+        </div>
+
+        <!-- Connect & GTM -->
+        <div class="space-y-3">
+          <div class="text-[#FDFBF7] font-bold text-xs font-mono uppercase tracking-wider">Campus Outreach</div>
+          <ul class="space-y-2 text-xs">
+            <li><a href="mailto:partnerships@finova.edu" class="hover:text-[#FDFBF7] transition-colors">partnerships@finova.edu</a></li>
+            <li><span class="text-[#D8C5B2]">Amaravati, AP, India</span></li>
+            <li><a href="#" class="hover:text-[#FDFBF7] transition-colors">Student Ambassador Program</a></li>
+            <li><a href="#" class="hover:text-[#FDFBF7] transition-colors">Placement Cell Partnerships</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-[#DDA15E]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C6D53] font-mono">
+        <div>
+          &copy; 2026 Finova Inc. Built for higher education institutions. Ready for Vercel deployment.
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-[#D8C5B2] transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-[#D8C5B2] transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-[#D8C5B2] transition-colors">Security Overview</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- REQUEST CAMPUS DEMO MODAL -->
+  <div id="demoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 overflow-y-auto">
+    <div class="max-w-lg w-full bg-[#1A130F] border-2 border-[#DDA15E]/40 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8">
+      
+      <button id="closeDemoModalBtn" type="button" class="absolute top-5 right-5 text-[#D8C5B2] hover:text-[#FDFBF7] p-2 rounded-lg bg-[#241A14]" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <form id="campusDemoForm" class="space-y-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#DDA15E]/15 border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] mb-2 font-bold">
+            Institutional Dean Portal
+          </div>
+          <h3 class="text-2xl font-display font-bold text-[#FDFBF7]">Schedule Campus Demonstration</h3>
+          <p class="text-xs text-[#D8C5B2] mt-1">Get custom sandbox access for your university's LMS in under 15 minutes.</p>
+        </div>
+
+        <div>
+          <label for="demoName" class="block text-xs font-medium text-[#FDFBF7] mb-1">Full Name</label>
+          <input id="demoName" type="text" required placeholder="e.g. Dean Rajesh Sharma" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] placeholder-[#8C6D53] focus:outline-none focus:border-[#DDA15E]">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="demoEmail" class="block text-xs font-medium text-[#FDFBF7] mb-1">Official University Email</label>
+            <input id="demoEmail" type="email" required placeholder="r.sharma@vitap.ac.in" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] placeholder-[#8C6D53] focus:outline-none focus:border-[#DDA15E]">
+          </div>
+          <div>
+            <label for="demoUniversity" class="block text-xs font-medium text-[#FDFBF7] mb-1">Institution Name</label>
+            <input id="demoUniversity" type="text" required placeholder="e.g. VIT-AP University" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] placeholder-[#8C6D53] focus:outline-none focus:border-[#DDA15E]">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="demoRole" class="block text-xs font-medium text-[#FDFBF7] mb-1">Academic Role</label>
+            <select id="demoRole" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] focus:outline-none focus:border-[#DDA15E]">
+              <option value="dean">Dean of Academic Affairs</option>
+              <option value="hod">Head of Department / Director</option>
+              <option value="placement">Placement & Career Cell</option>
+              <option value="faculty">Curriculum Committee</option>
+              <option value="student">Student Body President / Lead</option>
+            </select>
+          </div>
+          <div>
+            <label for="demoLms" class="block text-xs font-medium text-[#FDFBF7] mb-1">Primary Campus LMS</label>
+            <select id="demoLms" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] focus:outline-none focus:border-[#DDA15E]">
+              <option value="canvas">Canvas (Instructure) LTI 1.3</option>
+              <option value="moodle">Moodle</option>
+              <option value="blackboard">Blackboard Learn</option>
+              <option value="d2l">D2L Brightspace</option>
+              <option value="other">Other / Custom LMS</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="demoNotes" class="block text-xs font-medium text-[#FDFBF7] mb-1">Target Cohort Size</label>
+          <select id="demoNotes" class="w-full bg-[#120D0A] border border-[#DDA15E]/30 rounded-xl px-4 py-2.5 text-sm text-[#FDFBF7] focus:outline-none focus:border-[#DDA15E]">
+            <option value="500-1500">500 – 1,500 students (Single school/pilot)</option>
+            <option value="1500-5000">1,500 – 5,000 students (Multi-department)</option>
+            <option value="5000+">5,000+ students (Campus-wide rollout)</option>
+          </select>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-3.5 rounded-xl btn-gold font-bold text-sm shadow-xl flex items-center justify-center gap-2">
+            <span>Confirm & Provision Sandbox</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+
+        <p class="text-[11px] text-[#8C6D53] text-center font-mono">
+          🔒 Zero spam • FERPA compliant • Direct institutional contact only
+        </p>
+      </form>
+
+      <div id="demoConfirmation" class="hidden text-center py-6 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-[#38A169]/20 text-[#38A169] border border-[#38A169]/40 mx-auto flex items-center justify-center text-3xl animate-bounce">
+          ✓
+        </div>
+        <h3 class="text-2xl font-bold text-[#FDFBF7]">Campus Sandbox Provisioned</h3>
+        <p id="demoConfirmSummary" class="text-sm text-[#EDE5DC] leading-relaxed max-w-sm mx-auto">
+          Your Canvas/Moodle LTI credentials and executive deck have been generated.
+        </p>
+        <div class="p-4 rounded-xl bg-[#120D0A] border border-[#DDA15E]/30 text-xs font-mono text-[#DDA15E] space-y-1">
+          <div>LTI Client ID: finova-lti-v13-sand-4921</div>
+          <div>Deployment Status: Ready for 1-Click LMS Connect</div>
+        </div>
+        <button type="button" onclick="document.getElementById('demoModal').classList.add('hidden')" class="px-6 py-2.5 rounded-xl btn-gold text-xs font-bold">
+          Return to Site
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Core Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>
